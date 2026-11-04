@@ -75,17 +75,21 @@ glm::mat4 Renderer::computeMVP(){
   int fw, fh;
   glfwGetFramebufferSize(window_, &fw, &fh);
   float aspect = static_cast<float>(fw) / static_cast<float>(fh);
-  glm::mat4 proj = glm::perspective(glm::radians(60.0f), aspect, 0.1f, 100.0f);
+  glm::mat4 proj = glm::perspective(glm::radians(50.0f), aspect, 0.1f, 100.0f);
   
   float t = glfwGetTime();
 
   glm::mat4 view = glm::lookAt(
-      glm::vec3(3.0f*std::cos(t), 0.0f, 3.0f*std::sin(t)),
-      glm::vec3(0.0f,0.0f,0.0f),
+      glm::vec3(60.0f*std::sin(t/8), 70.0f, 60.0f*std::cos(t/8)),
+      glm::vec3(0.0f,30.0f,0.0f),
       glm::vec3(0.0f,1.0f,0.0f)
       );
 
-  glm::mat4 mvp = proj * view; 
+  glm::mat4 model = glm::rotate(glm::mat4(1.0f),
+                              glm::radians(-90.0f),
+                              glm::vec3(1, 0, 0));
+
+  glm::mat4 mvp = proj * view * model; 
   return mvp;
 }
 

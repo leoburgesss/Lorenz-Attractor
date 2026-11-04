@@ -11,6 +11,7 @@
 #include <cmath>
 
 #include "render/render.h"
+#include "functions/functions.h"
 
 constexpr int screenWidth = 1080;
 constexpr int screenHeight = 1080;
@@ -45,7 +46,7 @@ Renderer r = Renderer(window, screenWidth, screenHeight);
     glClearColor(0.0705f, 0.2196f, 0.2196f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 
-    std::vector<float> p = {-1,0,0, 1,1,0, 0,0,0};
+    std::vector<float> p = functions::lorenzAttractor(20000, 0.005, 10.0, 28.0, 8.0/3.0, {0.0f, 1.0f, 1.05f});
 
     r.drawPoints(p, 3);
   

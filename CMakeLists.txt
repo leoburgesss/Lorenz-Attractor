@@ -12,6 +12,9 @@ add_executable(Lorenz
   src/main.cpp
   src/render/render.cpp
   src/render/render.h
+  src/functions/functions.cpp
+  src/functions/functions.h
+
 )
 
 target_include_directories(Lorenz PRIVATE src)
